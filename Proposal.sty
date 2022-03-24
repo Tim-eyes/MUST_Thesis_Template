@@ -1,0 +1,71 @@
+
+% Define spacing for use on titlepage
+%
+\def\titleskip{\vskip 4\bigskipamount}      %% Whitespace after title
+\def\authorskip{\vskip 2\bigskipamount}     %% Whitespace after author
+%
+% Additional titlepage definitions
+%
+% The titlepage must conform to CIT requirements
+%
+% The chapter command without redefining the page style
+%
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+%
+% The abstract environment with page numbers
+%
+\if@titlepage
+  \renewenvironment{abstract}{%
+      \titlepage
+      \thispagestyle{headings}
+      \markright{ABSTRACT}
+      %\null\vfil
+      \begin{flushleft}%
+        \bfseries\LARGE\abstractname
+        \@endparpenalty\@M
+      \end{flushleft}}%
+     {\par\vfil\null\endtitlepage}
+\else
+  \renewenvironment{abstract}{%
+      \if@twocolumn
+        \section*{\LARGE\abstractname}%
+      \else
+        \small
+        \begin{center}%
+          {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation
+      \fi}
+      {\if@twocolumn\else\endquotation\fi}
+\fi
+%
+% Acknowledgements page
+%
+\newenvironment{acknowledgements}{%
+    \titlepage
+    \thispagestyle{headings}
+    \markright{ACKNOWLEDGEMENTS}
+    %\null\vfil
+    \begin{flushleft}%
+      \bfseries\LARGE Acknowledgements
+      \@endparpenalty\@M
+    \end{flushleft}}%
+   {\par\vfil\null\endtitlepage}
+
+%
+% Titlepage should not reset the page number
+%
+\renewenvironment{titlepage}
+    {%
+      \if@twocolumn
+        \@restonecoltrue\onecolumn
+      \else
+        \@restonecolfalse\newpage
+      \fi
+      \thispagestyle{empty}%
+      }%
+    {\if@restonecol\twocolumn \else \newpage \fi
+    }

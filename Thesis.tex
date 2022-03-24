@@ -1,0 +1,391 @@
+%----------------------------------------------------------------------------------------
+% Research Proposal
+%
+% Title:
+%
+% Author:HE PEILIN
+%
+% Last modified: 2022-03-12
+%-----------------------------------------------------------------------------------------
+\documentclass[12pt, a4paper]{report}
+\pagestyle{headings}
+
+\include{macros/style}
+\include{macros/usepackages}
+
+\usepackage{Proposal}
+
+% \setCJKmainfont[AutoFakeSlant=0.3, AutoFakeBold=2.17,Path=fonts/]{KaiTi}
+\setmainfont{Times New Roman}
+
+\lhead{\tiny }
+\chead{}
+\rhead{\small \leftmark}
+\renewcommand{\headrulewidth}{1pt}
+
+%\CenterWallPaper{.6}{figure/waterlogo.jpg}
+\graphicspath{{figure/}}
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png, .gif}  
+
+\renewcommand{\baselinestretch}{1.5}
+\parindent=0pt
+
+
+%\makeatletter %使\section居中
+%\renewcommand{\section}{\@startsection{section}{1}{0mm}
+ % {-\baselineskip}{0.5\baselineskip}{\bf\leftline}}
+% {-\baselineskip}{0.5\baselineskip}{\bf\centerline}}
+%\makeatother
+%使\chapte左侧
+%\titleformat{command}[shape]{format}{label}{sep}{before}[after]
+
+%\titlecontents{chapter}% <section-type>
+%  [0pt]% <left>
+%  {}% <above-code>
+%  {\bfseries\chaptername\ \thecontentslabel\quad}% <numbered-entry-format>
+%  {\bfseries}% <numberless-entry-format>
+%  {\bfseries\hfill\contentspage}% <filler-page-format>
+
+\titleformat{\chapter}{\centering\Large\bfseries}{Chapter\,\thechapter.}{1em}{}
+%\titleformat{\chapter}{\centering\Large\bfseries}{\thechapter.}{1em}{}
+\titlespacing{\chapter}{0pt}{0em}{1em}[0pt]
+
+%\titleformat{\section}{\leftline\bfseries}{section\,\thesection}{1em}{}
+
+\makeatletter %使\section左侧
+\renewcommand{\section}{\@startsection{section}{1}{0mm}
+ {-\baselineskip}{0.5\baselineskip}{\Large\bf\leftline}}
+ %{-\baselineskip}{0.5\baselineskip}{\Large\bf\centerline}}
+\makeatother
+
+
+\makeatletter %使\subsection左侧
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}
+  {-\baselineskip}{0.5\baselineskip}{\large\bf\leftline}}
+ %{-\baselineskip}{0.5\baselineskip}{\bf\centerline}}
+\makeatother
+
+
+\begin{document}
+%\bibliographystyle{alpha}
+\thispagestyle{empty}
+
+% --------------------------
+
+\def\Ctitle         {中文題目}
+\def\Etitle         {GANxxxxx}
+\def\Cname 			{某某某}
+\def\Ename          {HE}
+\def\Stuno 			{18098xxx-xxxx-xxxx}
+\def\Faculty 		{xxxx}
+\def\Program 		{xxx}
+\def\Major 		{xxxx}
+\def\Supervisor	{xxxx}
+
+%% Traditional Chinese title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\CenterWallPaper{.6}{figure/waterlogo.jpg}
+    \thispagestyle{empty} 														
+		\vspace*{.5cm}																 
+        {
+            \bf\sizefont{18pt}
+            \begin{center}												
+			\begin{tabular}{p{2em}<{\flushleft} c p{16em}<{\flushleft}}				
+				題\hfill 目&\hspace{-4mm}： & \Ctitle \\
+				Title& \hspace{-4mm}： & \Etitle
+			\end{tabular}
+		    \end{center}	 
+        }	
+		
+		\vspace*{1.5cm}
+        {
+            % \fontsize{12pt}{\baselineskip}\selectfont
+            \sizefont{12pt}
+            
+            \begin{table}[htbp]
+			\centering 
+			    \begin{tabular}{p{5em}ccc}
+					&\mycell{姓\qquad 名}{Name}{\Cname}
+					&\mycell{學\qquad 號}{StudentNo.}{\Stuno}
+					&\mycell{學\qquad 院}{Faculty}{\Faculty}
+					&\mycell{課\qquad 程}{Program}{\Program}
+					&\mycell{專\qquad 業}{Major}{\Major}
+					&\mycell{指導教師}{Supervisor}{\Supervisor}
+					&\mycell{日\qquad 期}{Date}{\today}
+				\end{tabular}
+			\end{table} 	
+  		}													
+\end{titlepage}
+
+%-------------------------------------------------------------------------------------
+\begin{titlepage}
+\CenterWallPaper{.6}{figure/waterlogo.jpg}
+\begin{center}
+    \bf\sizefont{18pt}\Etitle\\
+    \vspace{0.25in}
+    \large
+    by \\
+    \vspace{0.25in}
+    \large
+    \Ename \\
+    \bf\normalsize
+     (StudentNo.: \Stuno)\\
+    \begin{center}
+    \vspace{0.7in}
+    \bf\normalsize
+        Supervisor: \Supervisor\\
+    \vspace{0.8in}
+    \bf\normalsize
+        A thesis\\
+        submitted to the Faculty of Information Technology\\
+        and the School of Graduate Studies of \\
+        Macau University of Science and Technology\\
+        in partial fulfillment of the requirements for the degree of\\
+        (Name of degree)\\
+        in\\
+        (Name of major)\\
+    \vspace{1in}
+    \today
+  \end{center}
+  \end{center}
+  \end{titlepage}
+
+%-------------------------------------------------------------------------------------
+
+\pagestyle{fancy}
+\pagenumbering{Roman}
+\setlength{\parindent}{0.6cm}
+\addcontentsline{toc}{chapter}{摘要}
+
+\lhead{\Etitle}
+\rhead{\small 摘要}
+\setlength{\parskip}{0pt}    
+\chapter*{摘要} \par
+\bigskip
+\hspace*{1em}
+
+摘要
+
+\vspace{2em}
+\par \noindent\textbf{關鍵詞: XXXX}
+%\end{abstract}
+
+%-------------------------------------------------------------------------------------
+\newpage
+\pagestyle{fancy}
+%\pagenumbering{roman}
+%\setlength{\parindent}{0.6cm}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\lhead{\Etitle}
+\rhead{\small Abstract}
+\setlength{\parskip}{0pt}
+
+\chapter*{Abstract} \par
+\bigskip
+\hspace*{1em}
+Abstract
+
+\vspace{2em}
+\par \noindent\textbf{Keywords: XXXX}
+
+
+%-------------------------------------------------------------------------------------
+\newpage
+\pagestyle{fancy}
+%\lhead{\tiny }
+%\chead{}
+%\rhead{\small \leftmark}
+\addcontentsline{toc}{chapter}{Contents}
+
+\lhead{\Etitle}
+\rhead{\small Contents}
+    \setlength{\parskip}{0pt}
+
+%\thispagestyle{plain}
+\tableofcontents
+
+%\thispagestyle{plain}
+%-------------------------------------------------------------------------------------
+
+
+\newpage
+
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoffigures
+
+\lhead{\Etitle}
+\rhead{\small List of Figures}
+    \setlength{\parskip}{0pt}
+
+%-------------------------------------------------------------------------------------
+%\thispagestyle{plain}
+\newpage
+%\thispagestyle{plain}
+\addcontentsline{toc}{chapter}{List of Tables}
+
+\listoftables
+
+\lhead{\Etitle}
+\rhead{\small List of Tables}
+    \setlength{\parskip}{0pt}
+
+
+%\thispagestyle{plain}
+%\newpage
+%\pagestyle{headings}
+%-------------------------------------------------------------------------------------
+\pagestyle{fancy}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\chapter{Chapter one}
+
+
+\pagenumbering{arabic}
+
+
+\lhead{\Etitle}
+\rhead{\small Chapter one}
+    \setlength{\parskip}{0pt}
+   
+Chapter one's contents.\cite{DBLP:journals/corr/ReedAYLSL16}
+\cite{7780634}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+%\thispagestyle{plain}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\chapter{Chapter two}
+%\thispagestyle{plain}
+\lhead{\Etitle}
+\rhead{\small Chapter two}
+    \setlength{\parskip}{0pt}
+
+Chapter two'contents.
+
+\section{Section two}\label{Section_two}
+
+\subsection{Subsection 2.1}
+
+\hspace*{1em} Subsection's contents.
+
+\subsection{Subsection 2.2}
+
+\hspace*{1em} Subsection's contents.
+
+\subsection{Subsection 2.3}
+
+\hspace*{1em} Subsection's contents.
+
+
+%%\begin{figure}[htbp]
+%%  \centering
+%%  \includegraphics[width=0.7\linewidth]{xxx}\
+%%  \caption[}\label{fig:figure}
+%%\end{figure}
+
+\subsection{Subsection 2.4}
+
+\hspace*{1em} Subsection's contents.
+
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\chapter{Chapter Three}
+%\thispagestyle{plain}
+\lhead{\Etitle}
+\rhead{\small Chapter Three}
+    \setlength{\parskip}{0pt}
+
+Chapter Three' contents.
+
+\section{Section 3.1}
+
+\hspace*{1em} Section 3.1's contents.
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\chapter{Chapter Four}
+%\thispagestyle{plain}
+\lhead{\Etitle}
+\rhead{\small Chapter Four}
+    \setlength{\parskip}{0pt}
+
+Chapter Four's contents.
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+%\thispagestyle{plain}
+\lhead{\Etitle}
+\rhead{\small Bibliography}
+    \setlength{\parskip}{0pt}
+
+\bibliographystyle{apalike}
+%\bibliographystyle{tJDE}
+\bibliography{bibliography/bibliography}
+
+%---------------------------------------------------------------------------
+\newpage
+\clearpage
+\addcontentsline{toc}{chapter}{Appendix}
+\chapter*{Appendix}
+\thispagestyle{fancy}
+\lhead{\Etitle}
+\rhead{\small Appendix}
+    \setlength{\parskip}{0pt}
+
+    dd
+%---------------------------------------------------------------------------
+
+\newpage
+\clearpage
+\addcontentsline{toc}{chapter}{Curriculum Vitae}
+\chapter*{Curriculum Vitae}
+%\thispagestyle{plain}
+\thispagestyle{fancy}
+\lhead{\Etitle}
+\rhead{\small Curriculum Vitae}
+\section*{Personal Data:}
+\begin{tabular}{lp{4.5in}}
+Name: & xxxxx\\
+Birthday: & xxxxx\\
+Email: & xxxxx\\
+Research Area: & xxxxx\\
+\end{tabular}
+
+
+\section*{Educational Background:}
+\begin{tabular}{lp{4.0in}}
+09/20xx - 06/20xx & xxxx \\
+
+09/20xx - 06/20xx & xxxxx \\
+
+09/20xx - 07/20xx & xxxxx \\
+\end{tabular}
+
+%---------------------------------------------------------------------------
+\newpage
+\clearpage
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\thispagestyle{fancy}
+\lhead{\Etitle}
+\rhead{\small Acknowledgements}
+    \setlength{\parskip}{0pt}
+
+\chapter*{Acknowledgements} \par 
+\bigskip 
+
+
+I am glad to.....
+
+\vspace{1cm}
+\par\rightline{\Ename}
+\rightline{\Faculty}
+
+\rightline{\today}
+\end{document}
