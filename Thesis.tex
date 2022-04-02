@@ -24,8 +24,7 @@
 \renewcommand{\headrulewidth}{1pt}
 
 %\CenterWallPaper{.6}{figure/waterlogo.jpg}
-\graphicspath{{figure/}}
-\DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png, .gif}  
+\graphicspath{{.}}
 
 \renewcommand{\baselinestretch}{1.5}
 \parindent=0pt
@@ -81,6 +80,7 @@
 \def\Program 		{xxx}
 \def\Major 		{xxxx}
 \def\Supervisor	{xxxx}
+\newcommand{\Stoday}{\number\year 年 \number\month 月 \number\day 日}
 
 %% Traditional Chinese title
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,7 +112,7 @@
 					&\mycell{課\qquad 程}{Program}{\Program}
 					&\mycell{專\qquad 業}{Major}{\Major}
 					&\mycell{指導教師}{Supervisor}{\Supervisor}
-					&\mycell{日\qquad 期}{Date}{\today}
+					&\mycell{日\qquad 期}{Date}{\Stoday}
 				\end{tabular}
 			\end{table} 	
   		}													
@@ -271,15 +271,16 @@ Chapter two'contents.
 
 \subsection{Subsection 2.1}
 
-\hspace*{1em} Subsection's contents.
+Subsection's contents.
 
 \subsection{Subsection 2.2}
 
-\hspace*{1em} Subsection's contents.
+Subsection's contents.
 
 \subsection{Subsection 2.3}
 
-\hspace*{1em} Subsection's contents.
+Subsection's contents.
+
 
 
 %%\begin{figure}[htbp]
@@ -290,7 +291,7 @@ Chapter two'contents.
 
 \subsection{Subsection 2.4}
 
-\hspace*{1em} Subsection's contents.
+Subsection's contents.
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
@@ -304,7 +305,7 @@ Chapter Three' contents.
 
 \section{Section 3.1}
 
-\hspace*{1em} Section 3.1's contents.
+Section 3.1's contents.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
@@ -315,7 +316,45 @@ Chapter Three' contents.
     \setlength{\parskip}{0pt}
 
 Chapter Four's contents.
+\begin{table}
+    %\Large
+    \fontsize{7}{15}\selectfont
+    \begin{center}
+ %   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| p{0.5cm}|}
+    \caption[Comparison of the APs and mAPs with our framework and those from DPM and R-CNN.]{Comparison of the APs and mAPs with our framework and those from DPM and R-CNN on PASCAL VOC 2007 testing dataset.}\label{Table}
+    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
+    \hline
+      &plane&bike&bird&boat&bottle&bus&car&cat \\ \hline
+      DPM&32.8&56.8&2.5&16.8&28.5&39.7&51.6&21.3 \\ \hline
+      R-CNN&64.2&69.7&50.0&41.9&32.0&62.6&71.0&60.7 \\ \hline
+      Ours&{\bf64.4}&{\bf72.8}&{\bf50.3}&{\bf43.3}&{\bf37.2}&{\bf66.7}&{\bf72.9}&{\bf60.9} \\ \hline
+ %   \end{tabular}
+    \end{tabu}
 
+    \vspace{1cm}
+
+    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
+    \hline
+      &chair&cow&table&dog&horse&mbik&pers&plant \\ \hline
+      DPM&17.9&18.5&25.9&8.8&49.2&41.2&36.8&14.6 \\ \hline
+      R-CNN&32.7&58.5&46.5&56.1&60.6&66.8&54.2&{\bf31.5} \\ \hline
+      Ours&{\bf34.8}&{\bf61.1}&{\bf46.5}&{\bf57.2}&{\bf70.8}&{\bf69.7}&{\bf58.6}&30.7 \\ \hline
+ %   \end{tabular}
+    \end{tabu}
+
+    \vspace{1cm}
+
+    \begin{tabu} to 1.00\textwidth{|X[c]| X[c] X[c] X[c] X[c]|p{0.5cm}|}
+    \hline
+      &sheep&sofa&train&tv&mAP \\ \hline
+      DPM&16.2&24.4&39.2&39.1&39.1 \\ \hline
+      R-CNN&52.8&48.9&57.9&64.7&54.2 \\ \hline
+      Ours&{\bf57.0}&{\bf49.8}&{\bf58.0}&{\bf65.4}&{\bf56.4}  \\ \hline
+ %   \end{tabular}
+    \end{tabu}
+  %  \caption{{\bf Testing on PASCAL VOC 2007 testing dataset. We compare results from our method with the ones from DPM and RCNN.}}
+    \end{center}
+\end{table}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
 \clearpage

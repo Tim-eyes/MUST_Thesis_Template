@@ -11,6 +11,15 @@
 \usepackage{morefloats}
 \usepackage{makecell}
 \usepackage{minibox}
+\usepackage{tabularx} %\table 
+\usepackage{booktabs}% 	\toprule \midrule \bottomrule
+
+% define color canvas 
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\definecolor{mygray}{gray}{.9}
+\definecolor{mypink}{rgb}{.99,.91,.95}
+\definecolor{mycyan}{cmyk}{.3,0,0,0}
 
 % Mathematics support
 \usepackage{amsmath}
@@ -21,7 +30,13 @@
 \usepackage{verbatim}
 
 % algorithms
+\makeatletter  
+\newif\if@restonecol  
+\makeatother  
+\let\algorithm\relax  
+\let\endalgorithm\relax 
 \usepackage[boxed,ruled,noline,linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{algpseudocode}
 
 % tikz 
 \usepackage{tikz}
@@ -32,12 +47,18 @@
 \usepackage{textcase}
 %\usepackage{txfonts}
 
+% Theorem initialization 
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
 
 % Graphics
 \usepackage{wasysym}
 \usepackage{graphics}
-\usepackage{graphicx}   % A package to allow insertion of
-                        % external image files
+\usepackage{graphicx}   % A package to allow insertion of external image files
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png, .gif}  
+
 \usepackage{rotating}
 % \usepackage{subfigure}
 \usepackage{subfig}
@@ -53,6 +74,21 @@
 
 % code listing 
 \usepackage{listings}
+\lstset{
+	tabsize=2,
+	numbers=left, 
+	numberstyle= \tiny, 
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	keywordstyle=\color{blue!90}\bfseries , 
+	commentstyle=\color{red!10!green!70}\textit , 
+	showspaces=false,    
+	showstringspaces=false,  
+	frame=shadowbox,
+	breaklines=true,
+	extendedchars=false, 
+	% title=\lstname ,
+	% morekeywords={*,...}               % if you want to add more keywords to the set
+}
 
 % pdf & title
 \usepackage{epstopdf}
@@ -66,8 +102,5 @@
 
 % traditional chinese font 
 \usepackage{textcomp}
-\usepackage{xeCJK}
+\usepackage{xeCJK,CJKnumb,CJK}
 \usepackage{fontspec}
-
-
-
