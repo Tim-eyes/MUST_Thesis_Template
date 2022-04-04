@@ -5,7 +5,7 @@
 %
 % Author:HE PEILIN
 %
-% Last modified: 2022-03-12
+% Last modified: 2022-04-04
 %-----------------------------------------------------------------------------------------
 \documentclass[12pt, a4paper]{report}
 \pagestyle{headings}
@@ -250,8 +250,27 @@ Abstract
 \rhead{\small Chapter one}
     \setlength{\parskip}{0pt}
    
-Chapter one's contents.\cite{DBLP:journals/corr/ReedAYLSL16}
-\cite{7780634}
+Chapter one's contents. There is the citation. \cite{DBLP:journals/corr/ReedAYLSL16,7780634}
+
+\begin{itemize}
+    \item Introduction
+    \item Related work
+    \item Background
+    \item Notation
+    \item Method
+    \item Experiment
+    \item Conclusion
+\end{itemize}
+
+\begin{enumerate}
+    \item Introduction
+    \item Related work
+    \item Background
+    \item Notation
+    \item Method
+    \item Experiment
+    \item Conclusion
+\end{enumerate}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -269,30 +288,349 @@ Chapter two'contents.
 
 \section{Section two}\label{Section_two}
 
-\subsection{Subsection 2.1}
+\subsection{Table}
+
+Subsection's contents in Table \ref{tab:mul-tab} and \ref{tab:Ntt} .
+
+\begin{table}
+    %\Large
+    \fontsize{7}{15}\selectfont
+    \begin{center}
+ %   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| p{0.5cm}|}
+    \caption[Comparison of the APs and mAPs with our framework and those from DPM and R-CNN.]{Comparison of the APs and mAPs with our framework and those from DPM and R-CNN on PASCAL VOC 2007 testing dataset.}\label{tab:mul-tab}
+    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
+    \hline
+      &plane&bike&bird&boat&bottle&bus&car&cat \\ \hline
+      DPM&0.0&0.0&0.0&0.0&0.0&0.0&0.0&0.0 \\ \hline
+      R-CNN&0.0&0.0&0.0&0.0&0.0&0.0&0.0&0.0 \\ \hline
+      Ours&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0} \\ \hline
+ %   \end{tabular}
+    \end{tabu}
+
+    \vspace{1cm}
+
+    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
+    \hline
+      &chair&cow&table&dog&horse&mbik&pers&plant \\ \hline
+      DPM&0.0&0.0&0.0&0.0&0.0&0.0&0.0&0.0 \\ \hline
+      R-CNN&0.0&0.0&0.05&56.1&60.6&66.8&54.2&{\bf0.0} \\ \hline
+      Ours&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&{\bf0.0}&0.0 \\ \hline
+ %   \end{tabular}
+    \end{tabu}
+
+    \end{center}
+
+\end{table}
+
+\def\degree{${}^\circ$}
+\begin{table}[h]
+	\begin{center}
+		\begin{tabularx}{\textwidth}{cX}
+			\toprule
+			\multicolumn{1}{m{3cm}}{\centering Symbol}
+			&\multicolumn{1}{m{15cm}}{\centering Definition}\\
+			\midrule      
+			$s$&Angles of 45\degree in n-polygon \\
+			$r$&Angles of 90\degree in n-polygon\\
+			$l$&Angles of 135\degree in n-polygon\\
+			$S$& The aggregate of all space not matched any piece   \\
+			$P$& The aggregate of the weight point position in two-dimensional array\\
+			$H$& Threshold evaluating the probability to search next state\\
+			$\eta(p,d)$&Thresholding function of Simulated Annealing\\		
+			\bottomrule
+		\end{tabularx}
+		\caption{Notations}\label{tab:Ntt}
+	\end{center}
+\end{table}
+
+\subsection{Algorithms}
 
 Subsection's contents.
 
-\subsection{Subsection 2.2}
+The Algorithms \ref{algo:intervalR} and Algorithms \ref{algo:function}: 
+\begin{algorithm}
+    \DontPrintSemicolon
+    %%%%%%%%%%%%%
+    % set keywords arguments
+    \KwData{$G=(X,U)$ such that $G^{tc}$ is an order.}
+    \KwResult{$G'=(X,V)$ with $V\subseteq U$ such that $G'^{tc}$ is an
+    interval order.}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \Begin{
+    $V \longleftarrow U$\;
+    $S \longleftarrow \emptyset$\;
+    \For{$x\in X$}{
+    $NbSuccInS(x) \longleftarrow 0$\;
+    $NbPredInMin(x) \longleftarrow 0$\;
+    $NbPredNotInMin(x) \longleftarrow |ImPred(x)|$\;
+    }
+    \For{$x \in X$}{
+    \If{$NbPredInMin(x) = 0$ {\bf and} $NbPredNotInMin(x) = 0$}{
+    $AppendToMin(x)$}
+    }
+    \nl\While{$S \neq \emptyset$}{\label{InRes1}
+    \nlset{REM} remove $x$ from the list of $T$ of maximal index\;\label{InResR}
+    \lnl{InRes2}\While{$|S \cap ImSucc(x)| \neq |S|$}{
+    \For{$ y \in S-ImSucc(x)$}{
+    \{ remove from $V$ all the arcs $zy$ : \}\;
+    \For{$z \in ImPred(y) \cap Min$}{
+    remove the arc $zy$ from $V$\;
+    $NbSuccInS(z) \longleftarrow NbSuccInS(z) - 1$\;
+    move $z$ in $T$ to the list preceding its present list\;
+    \{i.e. If $z \in T[k]$, move $z$ from $T[k]$ to
+    $T[k-1]$\}\;
+    }
+    $NbPredInMin(y) \longleftarrow 0$\;
+    $NbPredNotInMin(y) \longleftarrow 0$\;
+    $S \longleftarrow S - \{y\}$\;
+    $AppendToMin(y)$\;
+    }
+    }
+    $RemoveFromMin(x)$\;
+    }
+    }
+    \caption{IntervalRestriction\label{IR}}
+    \label{algo:intervalR}
+\end{algorithm}
+    
+\begin{algorithm}
+    %%%%%%%%%%%%%
+    % set keywords function 
+    \SetKwProg{Fn}{Function}{ is}{end}
+    \newcommand{\forcond}{$i=0$ \KwTo $n$}
+    \SetKwFunction{FRecurs}{FnRecursive}%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \Fn(\tcc*[h]{algorithm as a recursive function}){\FRecurs{some args}}
+    {
+        \KwData{Some input data\\these inputs can be displayed on several lines and one
+        input can be wider than line's width.}
+        \KwResult{Same for output data}
+        \tcc{this is a comment to tell you that we will now really start code}
+        \If(\tcc*[h]{a simple if but with a comment on the same line}){this is true}
+        {
+            we do that, else nothing\;
+            \tcc{we will include other if so you can see this is possible}
+            \eIf{we agree that}
+            {
+                we do that\;
+            }
+            {
+            else we will do a more complicated if using else if\;
+            \uIf{this first condition is true}
+            {
+                we do that\;
+            }
+            \uElseIf{this other condition is true}
+            {
+                this is done\tcc*[r]{else if}
+            }
+            \Else
+            {
+                in other case, we do this\tcc*[r]{else}
+            }
+            }
+        }
+        \tcc{now loops}
+        \For{\forcond}
+        {
+            a for loop\;
+        }
+        \While{$i<n$}{
+        a while loop including a repeat--until loop\;
+            \Repeat{this end condition}
+            {
+                do this things\;
+            }
+        }
+        They are many other possibilities and customization possible that you have to
+        discover by reading the documentation.
+    }
+    \caption{Algorithm as a Recursive Function}
+    \label{algo:function}
+\end{algorithm}
 
-Subsection's contents.
-
-\subsection{Subsection 2.3}
-
-Subsection's contents.
 
 
+\subsection{Figure}
+Figure contents
 
-%%\begin{figure}[htbp]
-%%  \centering
-%%  \includegraphics[width=0.7\linewidth]{xxx}\
-%%  \caption[}\label{fig:figure}
-%%\end{figure}
+\subsubsection{Subfigure}
+In Figure \ref{fig:MUST1} and Figure \ref{fig:MUST2}, ....
 
-\subsection{Subsection 2.4}
+\begin{figure}[!htbp]
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+	\caption{MUSTSchoolBadgecolor.pdf} 
+	\label{fig:MUST1}
+\end{figure}
 
-Subsection's contents.
+\begin{figure}[!htbp]
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+    \begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figure/MUSTSchoolBadgecolor.pdf}
+	\end{minipage}
+	\caption{MUSTSchoolBadgecolor.pdf - 2 }
+	\label{fig:MUST2}
+\end{figure}
 
+\subsubsection{Tikz Figure}
+In Figure \ref{fig:flowchart} \footnote{referred from \url{https://latexdraw.com/draw-flowcharts-latex-tutorial/}}  ....
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[font=\small,thick]
+        % Start block
+        \node[draw,
+        rounded rectangle,
+        minimum width=2.5cm,
+        minimum height=1cm] (block1) {START};
+        
+        % Voltage and Current Measurement
+        \node[draw,
+        trapezium, 
+        trapezium left angle = 65,
+        trapezium right angle = 115,
+        trapezium stretches,
+        below=of block1,
+        minimum width=3.5cm,
+        minimum height=1cm
+        ] (block2) { Measure $I_k$, $V_k$ };
+
+        % Power and voltage variation
+        \node[draw,
+        below=of block2,
+        minimum width=3.5cm,
+        minimum height=1cm
+        ] (block3) { $\Delta P=P_k-P_{k-1}$ \hspace{1em} $\Delta V=V_k-V_{k-1}$ };
+
+        % Conditions test
+        \node[draw,
+        diamond,
+        below=of block3,
+        minimum width=2.5cm,
+        inner sep=0] (block4) { $\Delta P>0$};
+
+        \node[draw,
+        diamond,
+        below left=of block4,
+        minimum width=2.5cm,
+        inner sep=0] (block5) { $\Delta V>0$};
+
+        \node[draw,
+        diamond,
+        below right=of block4,
+        minimum width=2.5cm,
+        inner sep=0] (block6) { $\Delta V>0$};
+
+        % Increase and Decrease duty cycle
+        \node[draw,
+        below=of block5,
+        minimum width=2.5cm,
+        minimum height=1cm] (block7) { $D=D+\Delta D$};
+
+        \node[draw,
+        left=of block7,
+        minimum width=2.5cm,
+        minimum height=1cm] (block8) { $D=D-\Delta D$};
+
+        \node[draw,
+        below=of block6,
+        minimum width=2.5cm,
+        minimum height=1cm] (block9) { $D=D-\Delta D$};
+
+        \node[draw,
+        right=of block9,
+        minimum width=2.5cm,
+        minimum height=1cm] (block10) { $D=D+\Delta D$};
+
+        % Return block
+        \node[draw,
+        rounded rectangle,
+        below=5cm of block4,
+        minimum width=2.5cm,
+        minimum height=1cm,] (block11) { RETURN};
+
+        \node[coordinate,below=4.35cm of block4] (block12) {};
+
+        % Arrows
+        \draw[-latex] (block1) edge (block2)
+        (block2) edge (block3)
+        (block3) edge (block4);
+
+        \draw[-latex] (block4) -| (block5)
+        node[pos=0.25,fill=white,inner sep=0]{Yes};
+
+        \draw[-latex] (block4) -| (block6)
+        node[pos=0.25,fill=white,inner sep=0]{No};
+
+        \draw[-latex] (block5) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block7)
+        (block5) -| (block8)
+            node[pos=0.25,fill=white,inner sep=0]{Yes};
+
+        \draw[-latex] (block6) edge node[pos=0.4,fill=white,inner sep=2pt]{No}(block9)
+        (block6) -| (block10)
+            node[pos=0.25,fill=white,inner sep=0]{Yes};
+
+        \draw (block7) |- (block12);
+        \draw (block9) |- (block12);
+        \draw (block8) |- (block7|-block12);
+        \draw (block10) |- (block9|-block12);
+        \draw[-latex] (block12) -- (block11);
+    \end{tikzpicture}
+    \caption{Tikz Flowchart}
+    \label{fig:flowchart}
+\end{figure}
+
+\subsection{Equation}
+
+formula example 
+
+\subsubsection{Equtaion}
+\begin{equation}
+   \int _ { - \epsilon } ^ { \infty } d l \: \mathrm { e } ^ { - l \zeta } \int _ { - \epsilon } ^ { \infty } d l ^ { \prime } \mathrm { e } ^ { - l ^ { \prime } \zeta } l l ^ { \prime } { \frac { l ^ { \prime } - l } { l + l ^ { \prime } } } \{ 3 \, \delta ^ { \prime \prime } ( l ) - { \frac { 3 } { 4 } } t \, \delta ( l ) \} = 0 . 
+\end{equation}
+
+\begin{equation}
+    d s ^ { 2 } = ( 1 - { \frac { q c o s \theta } { r } } ) ^ { \frac { 2 } { 1 + \alpha ^ { 2 } } } \lbrace d r ^ { 2 } + r ^ { 2 } d \theta ^ { 2 } + r ^ { 2 } s i n ^ { 2 } \theta d \varphi ^ { 2 } \rbrace - { \frac { d t ^ { 2 } } { ( 1 - { \frac { q c o s \theta } { r } } ) ^ { \frac { 2 } { 1 + \alpha ^ { 2 } } } } } \, .
+\end{equation}
+
+\subsubsection{Multiple-Line Equation}
+\begin{eqnarray}
+    & { \frac { \phi ^ { \prime \prime } } { A } } + { \frac { 1 } { A } } \left( - { \frac { 1 } { 2 } } { \frac { A ^ { \prime } } { A } } + 2 { \frac { B ^ { \prime } } { B } } + { \frac { 2 } { r } } \right) \phi ^ { \prime } - { \frac { 2 } { r ^ { 2 } } } \phi - \lambda \phi ( \phi ^ { 2 } - \eta ^ { 2 } ) = 0 \, . 
+    \\
+    & \begin{aligned}
+        & { \cal L } = - { \frac { 1 } { 4 } } F _ { \mu \nu } F ^ { \mu \nu } + { \bar { \psi } } ( i \gamma ^ { \mu } D _ { \mu } - m ) \psi \, ,
+        \\
+        & S \sim \tilde { \psi } Q _ { o } \tilde { \psi } + g _ { s } ^ { 1 / 2 } \tilde { \psi } ^ { 3 } + \tilde { \phi } Q _ { c } \tilde { \phi } + g _ { s } \tilde { \phi } ^ { 3 } + \tilde { \phi } B ( g _ { s } ^ { 1 / 2 } \tilde { \psi } ) + \cdots .
+    \end{aligned}
+\end{eqnarray}
+
+\subsubsection{Theorem}
+\begin{theorem}[Separating Axis Theorem] : \footnote{reference from \url{https://en.wikipedia.org/wiki/Hyperplane_separation_theorem}}
+	Let $A$ and $B$ be two disjoint nonempty convex subsets of $R^n$. 
+	Then there exist a nonzero vector $v$ and a real number $c$ such that
+	\begin{equation*}
+		\langle x,v \rangle \geq c \quad \text{\rm and} \quad\langle y,v \rangle \leq c 
+	\end{equation*}\label{theor:sat}
+   for all $x$ in $A$ and $y$ in $B$; i.e., the hyperplane $\langle\cdot ,v \rangle =c $, $v$ is normal vector, separates $A$ and $B$. 
+\end{theorem}
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
 \chapter{Chapter Three}
@@ -316,45 +654,7 @@ Section 3.1's contents.
     \setlength{\parskip}{0pt}
 
 Chapter Four's contents.
-\begin{table}
-    %\Large
-    \fontsize{7}{15}\selectfont
-    \begin{center}
- %   \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| p{0.5cm}|}
-    \caption[Comparison of the APs and mAPs with our framework and those from DPM and R-CNN.]{Comparison of the APs and mAPs with our framework and those from DPM and R-CNN on PASCAL VOC 2007 testing dataset.}\label{Table}
-    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
-    \hline
-      &plane&bike&bird&boat&bottle&bus&car&cat \\ \hline
-      DPM&32.8&56.8&2.5&16.8&28.5&39.7&51.6&21.3 \\ \hline
-      R-CNN&64.2&69.7&50.0&41.9&32.0&62.6&71.0&60.7 \\ \hline
-      Ours&{\bf64.4}&{\bf72.8}&{\bf50.3}&{\bf43.3}&{\bf37.2}&{\bf66.7}&{\bf72.9}&{\bf60.9} \\ \hline
- %   \end{tabular}
-    \end{tabu}
 
-    \vspace{1cm}
-
-    \begin{tabu} to 1.00\textwidth{|X[c]|X[c] X[c] X[c] X[c] X[c] X[c] X[c] p{0.5cm}|}
-    \hline
-      &chair&cow&table&dog&horse&mbik&pers&plant \\ \hline
-      DPM&17.9&18.5&25.9&8.8&49.2&41.2&36.8&14.6 \\ \hline
-      R-CNN&32.7&58.5&46.5&56.1&60.6&66.8&54.2&{\bf31.5} \\ \hline
-      Ours&{\bf34.8}&{\bf61.1}&{\bf46.5}&{\bf57.2}&{\bf70.8}&{\bf69.7}&{\bf58.6}&30.7 \\ \hline
- %   \end{tabular}
-    \end{tabu}
-
-    \vspace{1cm}
-
-    \begin{tabu} to 1.00\textwidth{|X[c]| X[c] X[c] X[c] X[c]|p{0.5cm}|}
-    \hline
-      &sheep&sofa&train&tv&mAP \\ \hline
-      DPM&16.2&24.4&39.2&39.1&39.1 \\ \hline
-      R-CNN&52.8&48.9&57.9&64.7&54.2 \\ \hline
-      Ours&{\bf57.0}&{\bf49.8}&{\bf58.0}&{\bf65.4}&{\bf56.4}  \\ \hline
- %   \end{tabular}
-    \end{tabu}
-  %  \caption{{\bf Testing on PASCAL VOC 2007 testing dataset. We compare results from our method with the ones from DPM and RCNN.}}
-    \end{center}
-\end{table}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
 \clearpage
@@ -378,7 +678,64 @@ Chapter Four's contents.
 \rhead{\small Appendix}
     \setlength{\parskip}{0pt}
 
-    dd
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\Alph{section}.\arabic{subsection}}
+\addappheadtotoc
+
+\section{Code listing}    
+\subsection{Code Cpp}
+\begin{lstlisting}[language=c++]
+// leetcode 94, 110...
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <unordered_map>
+
+using namespace std;
+
+class AVL
+{
+public:
+};
+
+class Node // N-ary tree
+{
+public:
+    int val;
+    vector<Node *> children;
+
+    Node() {}
+
+    Node(int _val)
+    {
+        val = _val;
+    }
+
+    Node(int _val, vector<Node *> _children)
+    {
+        val = _val;
+        children = _children;
+    }
+};
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+vector<int> res;
+// N-ary issue
+\end{lstlisting}
+
+\subsection{Code Latex}
+\lstinputlisting[language=TeX, title=\lstname]{titlepage.tex}
 %---------------------------------------------------------------------------
 
 \newpage
