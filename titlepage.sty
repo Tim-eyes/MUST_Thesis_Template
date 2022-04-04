@@ -1,0 +1,68 @@
+% Title page of Thesis
+%
+\newcommand{\titleofthesisC}[1]{\renewcommand{\titleofthesisC}{#1}}
+\titleofthesisC
+{
+	\vspace*{.5cm}																 
+	{
+		\bf\sizefont{18pt}
+		\begin{center}												
+		\begin{tabular}{p{2em}<{\flushleft} c p{16em}<{\flushleft}}				
+			題\hfill 目&\hspace{-4mm}： & \Ctitle \\
+			Title& \hspace{-4mm}： & \Etitle
+		\end{tabular}
+		\end{center}	 
+	}	
+	
+	\vspace*{1.5cm}
+	{
+		% \fontsize{12pt}{\baselineskip}\selectfont
+		\sizefont{12pt}
+		
+		\begin{table}[htbp]
+		\centering 
+			\begin{tabular}{p{5em}ccc}
+				&\mycell{姓\qquad 名}{Name}{\Cname}
+				&\mycell{學\qquad 號}{StudentNo.}{\Stuno}
+				&\mycell{學\qquad 院}{Faculty}{\Faculty}
+				&\mycell{課\qquad 程}{Program}{\Program}
+				&\mycell{專\qquad 業}{Major}{\Major}
+				&\mycell{指導教師}{Supervisor}{\Supervisor}
+				&\mycell{日\qquad 期}{Date}{\Stoday}
+			\end{tabular}
+		\end{table} 	
+	}			
+}
+
+\newcommand{\titleofthesisE}[1]{\renewcommand{\titleofthesisE}{#1}}
+\titleofthesisE
+{
+	\begin{center}
+		\bf\sizefont{18pt}\Etitle\\
+		\vspace{0.25in}
+		\large
+		by \\
+		\vspace{0.25in}
+		\large
+		\Ename \\
+		\bf\normalsize
+		 (StudentNo.: \Stuno)\\
+		\begin{center}
+			\vspace{0.7in}
+			\bf\normalsize
+				Supervisor: \Supervisor\\
+			\vspace{0.8in}
+			\bf\normalsize
+				A thesis\\
+				submitted to the Faculty of Information Technology\\
+				and the School of Graduate Studies of \\
+				Macau University of Science and Technology\\
+				in partial fulfillment of the requirements for the degree of\\
+				\Degree \\%(Name of degree)
+				in\\
+				\Major \\%(Name of major)
+			\vspace{1in}
+			\today
+	  \end{center}
+	\end{center}
+}

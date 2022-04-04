@@ -14,6 +14,9 @@
 \include{macros/usepackages}
 
 \usepackage{Proposal}
+\usepackage{titlepage}
+\usepackage{cv-structure}
+
 
 % \setCJKmainfont[AutoFakeSlant=0.3, AutoFakeBold=2.17,Path=fonts/]{KaiTi}
 \setmainfont{Times New Roman}
@@ -70,6 +73,7 @@
 \thispagestyle{empty}
 
 % --------------------------
+% def information 
 
 \def\Ctitle         {中文題目}
 \def\Etitle         {GANxxxxx}
@@ -79,6 +83,7 @@
 \def\Faculty 		{xxxx}
 \def\Program 		{xxx}
 \def\Major 		{xxxx}
+\def\Degree 		{xxxx}
 \def\Supervisor	{xxxx}
 \newcommand{\Stoday}{\number\year 年 \number\month 月 \number\day 日}
 
@@ -86,70 +91,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titlepage}
 \CenterWallPaper{.6}{figure/waterlogo.jpg}
-    \thispagestyle{empty} 														
-		\vspace*{.5cm}																 
-        {
-            \bf\sizefont{18pt}
-            \begin{center}												
-			\begin{tabular}{p{2em}<{\flushleft} c p{16em}<{\flushleft}}				
-				題\hfill 目&\hspace{-4mm}： & \Ctitle \\
-				Title& \hspace{-4mm}： & \Etitle
-			\end{tabular}
-		    \end{center}	 
-        }	
-		
-		\vspace*{1.5cm}
-        {
-            % \fontsize{12pt}{\baselineskip}\selectfont
-            \sizefont{12pt}
-            
-            \begin{table}[htbp]
-			\centering 
-			    \begin{tabular}{p{5em}ccc}
-					&\mycell{姓\qquad 名}{Name}{\Cname}
-					&\mycell{學\qquad 號}{StudentNo.}{\Stuno}
-					&\mycell{學\qquad 院}{Faculty}{\Faculty}
-					&\mycell{課\qquad 程}{Program}{\Program}
-					&\mycell{專\qquad 業}{Major}{\Major}
-					&\mycell{指導教師}{Supervisor}{\Supervisor}
-					&\mycell{日\qquad 期}{Date}{\Stoday}
-				\end{tabular}
-			\end{table} 	
-  		}													
+\thispagestyle{empty} 														
+\titleofthesisC								
 \end{titlepage}
 
 %-------------------------------------------------------------------------------------
 \begin{titlepage}
 \CenterWallPaper{.6}{figure/waterlogo.jpg}
-\begin{center}
-    \bf\sizefont{18pt}\Etitle\\
-    \vspace{0.25in}
-    \large
-    by \\
-    \vspace{0.25in}
-    \large
-    \Ename \\
-    \bf\normalsize
-     (StudentNo.: \Stuno)\\
-    \begin{center}
-    \vspace{0.7in}
-    \bf\normalsize
-        Supervisor: \Supervisor\\
-    \vspace{0.8in}
-    \bf\normalsize
-        A thesis\\
-        submitted to the Faculty of Information Technology\\
-        and the School of Graduate Studies of \\
-        Macau University of Science and Technology\\
-        in partial fulfillment of the requirements for the degree of\\
-        (Name of degree)\\
-        in\\
-        (Name of major)\\
-    \vspace{1in}
-    \today
-  \end{center}
-  \end{center}
-  \end{titlepage}
+\thispagestyle{empty} 
+\titleofthesisE
+\end{titlepage}
 
 %-------------------------------------------------------------------------------------
 
@@ -671,17 +622,15 @@ Chapter Four's contents.
 %---------------------------------------------------------------------------
 \newpage
 \clearpage
-\addcontentsline{toc}{chapter}{Appendix}
-\chapter*{Appendix}
-\thispagestyle{fancy}
-\lhead{\Etitle}
-\rhead{\small Appendix}
-    \setlength{\parskip}{0pt}
-
 \appendix
 \renewcommand{\thesection}{\Alph{section}}
 \renewcommand{\thesubsection}{\Alph{section}.\arabic{subsection}}
+\chapter*{\appendixpagename}
 \addappheadtotoc
+\thispagestyle{fancy}
+\lhead{\Etitle}
+\rhead{\small \appendixpagename}
+    \setlength{\parskip}{0pt}
 
 \section{Code listing}    
 \subsection{Code Cpp}
@@ -735,7 +684,7 @@ vector<int> res;
 \end{lstlisting}
 
 \subsection{Code Latex}
-\lstinputlisting[language=TeX, title=\lstname]{titlepage.tex}
+\lstinputlisting[language=TeX, title=\lstname]{titlepage.sty}
 %---------------------------------------------------------------------------
 
 \newpage
@@ -746,23 +695,36 @@ vector<int> res;
 \thispagestyle{fancy}
 \lhead{\Etitle}
 \rhead{\small Curriculum Vitae}
-\section*{Personal Data:}
-\begin{tabular}{lp{4.5in}}
-Name: & xxxxx\\
-Birthday: & xxxxx\\
-Email: & xxxxx\\
-Research Area: & xxxxx\\
-\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% newcommand
+\newcommand{\clink}[1]{{\usefont{T1}{lmtt}{m}{n} #1 }}
+\def\Email  {\url{john@mailme.com}}
+\def\Phone  {+1 2345 6789} % +1 2345 6789
+\def\Web    {\url{www.myweb.com}}
+\def\Address    {New York, USA}
+\def\Photo  {figure/photo.jpg} %photo picture address
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section*{Educational Background:}
-\begin{tabular}{lp{4.0in}}
-09/20xx - 06/20xx & xxxx \\
+% Set user information of CV
+\userinformation 
 
-09/20xx - 06/20xx & xxxxx \\
+\aboutme{About Me}
+{
 
-09/20xx - 07/20xx & xxxxx \\
-\end{tabular}
+}
+
+\CVSection{Educational Background}
+\CVItem{2010 - 2011, Cornell University}{MEng in Computer Science}
+
+\CVItem{2007 - 2010, Cornell University}{BS in Computer Science}
+
+\CVSection{Awards}
+\CVSection{Working Experience}
+\CVSection{Product}
+\CVSection{Interests}
+
 
 %---------------------------------------------------------------------------
 \newpage

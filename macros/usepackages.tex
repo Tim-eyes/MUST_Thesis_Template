@@ -13,6 +13,9 @@
 \usepackage{minibox}
 \usepackage{tabularx} %\table 
 \usepackage{booktabs}% 	\toprule \midrule \bottomrule
+\usepackage{xltabular}
+\usepackage{array}
+\usepackage{enumitem}
 
 % define color canvas 
 \usepackage[table]{xcolor}
@@ -20,6 +23,7 @@
 \definecolor{mygray}{gray}{.9}
 \definecolor{mypink}{rgb}{.99,.91,.95}
 \definecolor{mycyan}{cmyk}{.3,0,0,0}
+
 
 % Mathematics support
 \usepackage{amsmath}
@@ -46,7 +50,9 @@
 % Text Control
 \usepackage{xspace}
 \usepackage{textcase}
-%\usepackage{txfonts}
+\usepackage[english]{babel}
+% \usepackage[T1]{fontenc}
+% \usepackage{txfonts}
 
 % Theorem initialization 
 \newtheorem{theorem}{Theorem}
@@ -59,18 +65,18 @@
 \usepackage{graphics}
 \usepackage{graphicx}   % A package to allow insertion of external image files
 \DeclareGraphicsExtensions{.pdf, .jpg, .tif, .png, .gif}  
-
+\usepackage{wrapfig}
 \usepackage{rotating}
 % \usepackage{subfigure}
 \usepackage{subfig}
 \usepackage{epsfig}
 
-%text colour
+% text colour
 \usepackage{color}
 \usepackage[colorlinks,linkcolor=black,anchorcolor=red,filecolor=magenta,urlcolor=cyan,citecolor=blue]{hyperref}   
-% \usepackage[dvipsnames]{xcolor}
+%\PassOptionsToPackage{usenames, dvipsnames}{xcolor} %\usepackage[usenames,dvipsnames]{xcolor}
 
-%bookmarks
+% bookmarks
 \usepackage{setspace}
 
 % code listing 

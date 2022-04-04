@@ -1,0 +1,44 @@
+% Define a new command for the CV user's information that goes into the left column
+\newcommand{\userinformation}[1]{\renewcommand{\userinformation}{#1}} 
+\userinformation
+{
+    \begin{tabularx}{\linewidth}{@{} m{0.8\textwidth} m{0.2\textwidth}@{}}
+        {
+            \large{\bf \Ename} \newline
+            \small{
+                \clink{
+                    \Email \;
+                    {\fontdimen 2 \font=0.75ex \Phone} \;
+                    \Web
+                } \newline
+                \Address
+            }
+        } & 
+        {
+            \hfill
+            \includegraphics[width=2.8cm]{\Photo}
+        }
+    \end{tabularx}
+}
+
+\newcommand{\cvheading}[1]{{\Huge\bfseries\color{blue} #1} \par\vspace{.6\baselineskip}} % New command for the CV heading
+\newcommand{\cvsubheading}[1]{{\Large\bfseries #1} \bigbreak} % New command for the CV subheading
+
+\newcommand{\aboutme}[2]{ % New command for the about me section
+\textbf{\color{blue} #1}~~#2\par\vspace{1em}
+}
+	
+\newcommand{\CVSection}[1]{ % New command for the headings within sections
+{\large\textbf{#1}}\par
+\vspace{0.2em} % Used for spacing
+\hrule 
+\vspace{0.5em}
+}
+
+\newcommand{\CVItem}[2]{ % New command for the item descriptions
+\textbf{\color{blue} #1}\par
+#2
+\vspace{0.5em} % Used for spacing
+}
+
+\newcommand{\bluebullet}{\textcolor{blue}{$\circ$}~~} % New command for the blue bullets
