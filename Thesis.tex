@@ -67,6 +67,12 @@
  %{-\baselineskip}{0.5\baselineskip}{\bf\centerline}}
 \makeatother
 
+\makeatletter %\subsubection居中,Roman
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0mm}
+ {-\baselineskip}{0.5\baselineskip}{\bf\centerline}}
+\renewcommand{\thesubsubsection}{\Roman{subsubsection}} 
+\makeatletter
+
 
 \begin{document}
 %\bibliographystyle{alpha}
@@ -697,8 +703,7 @@ vector<int> res;
 \rhead{\small Curriculum Vitae}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% newcommand
-\newcommand{\clink}[1]{{\usefont{T1}{lmtt}{m}{n} #1 }}
+%% def user information
 \def\Email  {\url{john@mailme.com}}
 \def\Phone  {+1 2345 6789} % +1 2345 6789
 \def\Web    {\url{www.myweb.com}}
