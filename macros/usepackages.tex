@@ -97,9 +97,24 @@
 	% title=\lstname ,
 	% morekeywords={*,...}               % if you want to add more keywords to the set
 }
+\usepackage{minted}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&&&
+%% minted usage & compile  
+% \inputminted[firstline=2, lastline=12]{tex}{titlepage.sty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% new environment setting 
+% \newmintinline{<lanuage>}{<setting>}
+% setting: \newmintinline{cpp}{breakanywhere,breaklines,linenos}
+% usage：\cppinline{code}
+% \newminted{cpp}{breakanywhere,breaklines,linenos}
+% \begin{cppcode}\end{cppcode}
+% \newmintedfile{cpp}{breakanywhere,breaklines,linenos}
+% \cppfile{file.py}
+% compile : use flag -shell-escape for latex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % pdf & title
-\usepackage{epstopdf}
+\usepackage{epstopdf} % epstopdf page: Drivers other than `pdftex' and `luatex' are not supported.
 \usepackage{tabu}
 \usepackage{wallpaper}
 \usepackage[center]{titlesec}

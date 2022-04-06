@@ -1,11 +1,11 @@
 %----------------------------------------------------------------------------------------
-% Research Proposal
+% Research Proposal for MUST 
 %
 % Title:
 %
 % Author:HE PEILIN
 %
-% Last modified: 2022-04-04
+% Last modified: 2022-04-05
 %-----------------------------------------------------------------------------------------
 \documentclass[12pt, a4paper]{report}
 \pagestyle{headings}
@@ -90,7 +90,8 @@
 \def\Program 		{xxx}
 \def\Major 		{xxxx}
 \def\Degree 		{xxxx}
-\def\Supervisor	{xxxx}
+\def\SupervisorC	{xxxx}
+\def\SupervisorE	{xxxx}
 \newcommand{\Stoday}{\number\year 年 \number\month 月 \number\day 日}
 
 %% Traditional Chinese title
@@ -611,6 +612,10 @@ Section 3.1's contents.
     \setlength{\parskip}{0pt}
 
 Chapter Four's contents.
+\paragraph{Paragraph} This is a paragraph.
+\paragraph*{Paragraph} This is a paragraph.
+\subparagraph{Sparagraph} This is a subparagraph.
+\subparagraph*{Sparagraph} This is a subparagraph.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \newpage
@@ -640,7 +645,7 @@ Chapter Four's contents.
 
 \section{Code listing}    
 \subsection{Code Cpp}
-\begin{lstlisting}[language=c++]
+\begin{minted}[frame=lines, framesep=2mm,baselinestretch=1.2,breaklines,fontsize=\footnotesize,linenos]{cpp}
 // leetcode 94, 110...
 #include <iostream>
 #include <vector>
@@ -686,8 +691,11 @@ struct TreeNode
 };
 
 vector<int> res;
-// N-ary issue
-\end{lstlisting}
+// N-ary issue 
+\end{minted}
+% \begin{lstlisting}[language=c++]
+
+% \end{lstlisting}
 
 \subsection{Code Latex}
 \lstinputlisting[language=TeX, title=\lstname]{titlepage.sty}
