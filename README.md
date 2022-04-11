@@ -17,7 +17,7 @@ Details following [usepackage.tex](macros/usepackages.tex)
    - [Texlive image1](https://mirror.bjtu.edu.cn/CTAN/systems/texlive/Images/)
    - [Texlive image2](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
 2. Vscode 
-   - Install extension [LaTeX WorksShop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) 
+   - Install extension [LaTeX WorkShop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) 
    - You can refer the sample of JSON file in to configure the user environment [setting.json](vscode_latex_setting/settings.json)
    - more tutorials in [使用VSCode编写LaTeX](https://zhuanlan.zhihu.com/p/38178015)
 3. Overleaf (most simple): [Overleaf Web](https://www.overleaf.com/)
