@@ -633,9 +633,13 @@ Chapter Four's contents.
 \newpage
 \clearpage
 \appendix
+\chapter*{\appendixpagename}
 \renewcommand{\thesection}{\Alph{section}}
 \renewcommand{\thesubsection}{\Alph{section}.\arabic{subsection}}
-\chapter*{\appendixpagename}
+\renewcommand{\thetable}{\Alph{section}.\arabic{subsection}}
+\setcounter{table}{0}
+\renewcommand{\thefigure}{\Alph{section}.\arabic{subsection}}
+\setcounter{figure}{0}
 \addappheadtotoc
 \thispagestyle{fancy}
 \lhead{\Etitle}
