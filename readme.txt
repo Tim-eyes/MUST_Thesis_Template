@@ -8,7 +8,7 @@ the following items:
 The same holds for other processors, such as xelatex. In fact you can give up this package by using package `listings` with command `\lstset{...}`. 
 4. For the reference in bibliography, you should copy the details of your paper from 
 Google Scholar to bibliography/bibliography.bib. (ps. the default bibtex format is  apalike in this template); it also can support the requirement -- automatically omit author name, if necessary.
-5. The Thesis fonts are respectively `Times New Roman` for English and `宋体繁`(songti) for traditional Chinese using package `xeCJK` or `CJK`.
+5. The Thesis fonts are respectively `Times New Roman` for English and `楷体繁`(KaiTi) for traditional Chinese using package `xeCJK` or `CJK`.
 6. The template using `report` as document class and `chapter` as primary heading.
 7. If you want to add new macros packages, be careful of the options to individual packages with same dependencies or in same re-implementation.
 8. Being appreciated to any feedback and suggestion from students and professor.  
